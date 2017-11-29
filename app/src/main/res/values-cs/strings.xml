@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Bitcoin Maker</string>
+    <string name="metrica">8968b183-3b66-4d74-a259-d13809d95874</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+</resources>
