@@ -1,8 +1,8 @@
 package com.freebitcoinmaker.satoshimining.bitcoinfaucet.core
 
-import android.app.Application
 import android.content.Context
 import android.support.multidex.MultiDex
+import android.support.multidex.MultiDexApplication
 import com.freebitcoinmaker.satoshimining.bitcoinfaucet.core.advertisements.AdvertisementManager
 import com.freebitcoinmaker.satoshimining.bitcoinfaucet.core.managers.CoinsManager
 import com.freebitcoinmaker.satoshimining.bitcoinfaucet.core.managers.PreferencesManager
@@ -17,7 +17,7 @@ import io.realm.Realm
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig
 import javax.inject.Inject
 
-class MyApplication : Application() {
+class MyApplication : MultiDexApplication() {
 
     @Inject lateinit var calligraphy: CalligraphyConfig
     @Inject lateinit var coinsManager: CoinsManager
