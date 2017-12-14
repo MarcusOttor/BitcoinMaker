@@ -23,32 +23,32 @@ class AdvertisementManager {
     constructor(preferencesManager: PreferencesManager, coinsManager: CoinsManager, context: Context) {
         this.preferencesManager = preferencesManager
 
-            this.house = HouseOffers(context, "Satoshi", coinsManager)
+        this.house = HouseOffers(context, "Satoshi", coinsManager)
 
-            this.adcolony = AdcolonyVideo(preferencesManager, coinsManager)
-
-
-            this.offertoro = OffertoroOfferwall(coinsManager, preferencesManager)
+        this.adcolony = AdcolonyVideo(preferencesManager, coinsManager)
 
 
-            this.vungle = VungleVideo(preferencesManager, coinsManager)
+        this.offertoro = OffertoroOfferwall(coinsManager, preferencesManager)
 
 
-            unity = UnityVideo(preferencesManager, coinsManager)
+        this.vungle = VungleVideo(preferencesManager, coinsManager)
 
-            fyber = FyberManager(coinsManager, preferencesManager)
+
+        unity = UnityVideo(preferencesManager, coinsManager)
+
+        fyber = FyberManager(coinsManager, preferencesManager)
 
     }
 
     fun init(activity: Activity) {
         if (!isActivated) {
             isActivated = true
-                if (vungle != null) {
-                    vungle?.init(activity)
-                }
-                if (offertoro != null) {
-                    offertoro?.init(activity)
-                }
+            if (vungle != null) {
+                vungle?.init(activity)
+            }
+            if (offertoro != null) {
+                offertoro?.init(activity)
+            }
             if (fyber != null) {
                 fyber?.init(activity as AppCompatActivity)
             }
@@ -57,12 +57,12 @@ class AdvertisementManager {
             }
             Thread {
 
-                    if (unity != null) {
-                        unity?.init(activity)
-                    }
-                    if (adcolony != null) {
-                        adcolony?.init(activity)
-                    }
+                if (unity != null) {
+                    unity?.init(activity)
+                }
+                if (adcolony != null) {
+                    adcolony?.init(activity)
+                }
                 onResume(activity, false)
             }.start()
         }
@@ -71,15 +71,21 @@ class AdvertisementManager {
     fun onResume(activity: Activity, thread: Boolean) {
         if (!resuming) {
             resuming = true
+            try {
+                if (fyber != null) {
+                    fyber?.onResume(activity as AppCompatActivity)
+                }
+            } catch (ex: Exception) {
+            }
             if (thread) {
                 Thread { resume(activity) }.start()
             } else {
                 resume(activity)
             }
             try {
-                    if (vungle != null) {
-                        vungle?.onResume()
-                    }
+                if (vungle != null) {
+                    vungle?.onResume()
+                }
             } catch (ex: Exception) {
             }
         }
@@ -87,9 +93,9 @@ class AdvertisementManager {
 
     private fun resume(activity: Activity) {
         try {
-                if (adcolony != null) {
-                    adcolony?.onResume(activity)
-                }
+            if (adcolony != null) {
+                adcolony?.onResume(activity)
+            }
         } catch (ex: Exception) {
         }
 
